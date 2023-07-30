@@ -2,18 +2,18 @@
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { StyleSheet, View, Text } from 'react-native';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
-// import Home from '../screens/Home';
-// import Notification from '../screens/Notification';
-// import News from '../screens/News';
-// import Settings from '../screens/Settings';
-// import Attendance from '../screens/Attendance';
+// import Home from '../Screens/Home';
+// import Calendar from '../Screens/Calendar';
+// import Customer from '../Screens/Customer';
+// import Measurement from '../Screens/Measurement';
+// import Settings from '../Screens/Settings';
 
 // const Tab = createBottomTabNavigator();
 
 // const home = "Home";
-// const news = "News";
-// const notification = "Notification";
-// const attendance = "Attendance";
+// const calendar = "Calendar";
+// const customer = "Customer";
+// const measurement = "Measurement";
 // const settings = "Settings";
 
 // const BottomTabNavigator = () => {
@@ -35,9 +35,9 @@
 //           if (rn === home) {
 //             IconName = focused ? "home" : "home-outline";
 //           } else if (rn === news) {
-//             IconName = focused ? "newspaper" : "newspaper-outline";
+//             IconName = focused ? "customer" : "customer-outline";
 //           } else if (rn === notification) {
-//             IconName = focused ? "notifications" : "notifications-outline";
+//             IconName = focused ? "calendar" : "calendar-outline";
 //             return (
 //               <View>
 //                 <Ionicons name={IconName} size={size} color={color} />
@@ -47,7 +47,7 @@
 //               </View>
 //             );
 //           } else if (rn === attendance) {
-//             IconName = focused ? "calendar" : "calendar-outline";
+//             IconName = focused ? "measurement" : "measurement-outline";
 //           } else if (rn === settings) {
 //             IconName = focused ? "settings" : "settings-outline";
 //           }
@@ -56,9 +56,9 @@
 //       })}
 //     >
 //       <Tab.Screen name={home} component={Home} />
-//       <Tab.Screen name={news} component={News} />
-//       <Tab.Screen name={notification} component={Notification} />
-//       <Tab.Screen name={attendance} component={Attendance} />
+//       <Tab.Screen name={customer} component={customer} />
+//       <Tab.Screen name={measurement} component={measurement} />
+//       <Tab.Screen name={calendar} component={calendar} />
 //       <Tab.Screen name={settings} component={Settings} />
 //     </Tab.Navigator>
 //   );

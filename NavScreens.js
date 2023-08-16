@@ -5,15 +5,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 // import Signin from "./Signin";
 import BottomTabNavigator from "./Navigation/BottomTabNavigator";
 // import Profile from "./screens/Profile";
-import Measurement from "./Screens/Dresses";
-import CustomerForm from "./Screens/MeasurementForm";
+import MeasurementForm from "./Screens/MeasurementForm";
+import Dresses from "./Screens/Dresses";
+import ShirtMeasurement from "./Screens/ShirtMeasurement";
+
 
 const Stack = createStackNavigator();
 
 const NavScreens = () => {
   return (
     <Stack.Navigator
-      initialRouteName="CustomerForm"
+      initialRouteName="ShirtMeasurement"
       screenOptions={{
         headerShown: false,
       }}
@@ -21,8 +23,9 @@ const NavScreens = () => {
       {/* <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Login" component={Login} />
       {/* <Stack.Screen name="Signin" component={Signin} /> */}
-      <Stack.Screen name="Measurement" component={Measurement} /> 
-      <Stack.Screen name="CustomerForm" component={CustomerForm} /> 
+      <Stack.Screen name="MeasurementForm" component={MeasurementForm} /> 
+      <Stack.Screen name="Dresses" component={Dresses} /> 
+      <Stack.Screen name="ShirtMeasurement" component={ShirtMeasurement} /> 
 
       <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
       {/* <Stack.Screen name="Home" component={Home} /> */}

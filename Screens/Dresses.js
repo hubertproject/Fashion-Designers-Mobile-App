@@ -1,80 +1,40 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+const windowWidth = Dimensions.get('window').width;
+
 const Dresses = ({ navigation }) => {
-  // Function to handle image press and navigate to the form screen
-  const handleImagePress = () => {
-    navigation.navigate('CustomerForm');  
+  // Function to handle image press and navigate to the corresponding measurement screen
+  const handleImagePress = (dressType) => {
+    navigation.navigate(`${dressType}Measurement`);
   };
+
+  const dressData = [
+    { name: 'LongSleeve', image: require('../assets/longs.png') },
+    { name: 'Shirt', image: require('../assets/shirt.png') },
+    { name: 'Female Coat', image: require('../assets/fmalecoat.jpg') },
+    { name: 'Male Coat', image: require('../assets/maleCoat.jpg') },
+    { name: 'Short', image: require('../assets/short.jpg') },
+    { name: 'Skirt', image: require('../assets/skirt.jpg') },
+  ];
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imagesContainer}>
-        {/* First Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/longs.png')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>LongSleeve</Text>
-        </TouchableOpacity>
-
-        {/* Second Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/shirt.png')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>Shirt</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.imagesContainer}>
-        {/* Third Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/fmalecoat.jpg')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>Female Coat</Text>
-        </TouchableOpacity>
-
-        {/* Fourth Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/maleCoat.jpg')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>Male Coat</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.imagesContainer}>
-        {/* Fifth Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/short.jpg')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>Short</Text>
-        </TouchableOpacity>
-
-        {/* Sixth Image */}
-        <TouchableOpacity onPress={handleImagePress}>
-          <Image
-            source={require('../assets/skirt.jpg')}
-            style={styles.image}
-          />
-          <Text style={styles.imageName}>Shirt</Text>
-        </TouchableOpacity>
+        {dressData.map((dress, index) => (
+          <TouchableOpacity key={index} onPress={() => handleImagePress(dress.name)} style={styles.imageWrapper}>
+            <Image source={dress.image} style={styles.image} />
+            <Text style={styles.imageName}>{dress.name}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       <View style={styles.plusIconContainer}>
         {/* Plus Icon */}
-        <TouchableOpacity onPress={handleImagePress} style={styles.plusIcon}>
+        <TouchableOpacity onPress={() => navigation.navigate('MeasurementForm')} style={styles.plusIcon}>
           <Icon name="plus-circle" size={40} color="green" />
-          <Text style={styles.plusIconText}>Add Image</Text>
+          <Text style={styles.plusIconText}>Add Dress</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -90,12 +50,18 @@ const styles = StyleSheet.create({
   },
   imagesContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  imageWrapper: {
+    width: '49%', // Two images per row with a little spacing in between
+    marginBottom: 20,
+    alignItems: 'center',
   },
   image: {
-    width: 150,
-    height: 150,
+    width: '100%',
+    height: 130,
     resizeMode: 'cover',
-    margin: 10,
     borderRadius: 10,
   },
   imageName: {
@@ -119,4 +85,3 @@ const styles = StyleSheet.create({
 });
 
 export default Dresses;
-

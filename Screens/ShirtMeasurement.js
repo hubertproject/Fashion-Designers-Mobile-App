@@ -14,14 +14,20 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const screenWidth = Dimensions.get('window').width;
 
-const MeasurementForm = () => {
+const ShirtMeasurement = () => {
   const [fabricImage, setFabricImage] = useState(null);
   const [designImage, setDesignImage] = useState(null);
   const [dressType, setDressType] = useState('');
   const [measurements, setMeasurements] = useState([
-    { measurement: '', size: '' },
-    { measurement: '', size: '' },
-    { measurement: '', size: '' },
+    { measurement: 'Chest', size: '' },
+    { measurement: 'Waist', size: '' },
+    { measurement: 'Seat', size: '' },
+    { measurement: 'Bicep', size: '' },
+    { measurement: 'Shirt Length', size: '' },
+    { measurement: 'Shoulder Width', size: '' },
+    { measurement: 'Sleeve Length', size: '' },
+    { measurement: 'Cuff Circumference', size: '' },
+    { measurement: 'Collar Size', size: '' },
   ]);
 
   const handleSelectImage = async (imageType) => {
@@ -64,7 +70,9 @@ const MeasurementForm = () => {
   };
 
   const handleAddMoreDetails = () => {
-    setMeasurements([...measurements, { measurement: '', size: '' }]);
+    const newMeasurements = [{ measurement: '', size: '' }];
+
+    setMeasurements([...measurements, ...newMeasurements]);
   };
 
   const handleDeleteDetails = (index) => {
@@ -114,38 +122,45 @@ const MeasurementForm = () => {
         </TouchableOpacity>
       </View>
 
-      {measurements.map((item, index) => (
-        <View key={index} style={styles.inputsContainer}>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Measurement"
-              value={item.measurement}
-              onChangeText={(text) => handleMeasurementChange(index, text)}
-              style={styles.input}
-            />
+      {measurements
+        .slice()
+        .reverse()
+        .map((item, index) => (
+          <View key={index} style={styles.inputsContainer}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                placeholder="Measurement"
+                value={item.measurement}
+                onChangeText={(text) =>
+                  handleMeasurementChange(measurements.length - index - 1, text)
+                }
+                style={styles.input}
+              />
+            </View>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                placeholder="Size"
+                value={item.size}
+                onChangeText={(text) =>
+                  handleSizeChange(measurements.length - index - 1, text)
+                }
+                keyboardType="numeric"
+                style={styles.input}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => handleDeleteDetails(measurements.length - index - 1)}>
+              <Icon name="trash" size={screenWidth * 0.08} color="red" />
+            </TouchableOpacity>
           </View>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Size"
-              value={item.size}
-              onChangeText={(text) => handleSizeChange(index, text)}
-              keyboardType="numeric"
-              style={styles.input}
-            />
-          </View>
-          <TouchableOpacity onPress={() => handleDeleteDetails(index)}>
-            <Icon name="trash" size={screenWidth * 0.08} color="red" />
-          </TouchableOpacity>
-        </View>
-      ))}
+        ))}
 
       <TouchableOpacity onPress={handleAddMoreDetails} style={styles.addMoreButton}>
         <Text style={styles.addMoreButtonText}>Add More Details</Text>
         <Icon name="plus-circle" size={screenWidth * 0.06} color="red" />
-        
       </TouchableOpacity>
-        {/* Save Button */}
-        <TouchableOpacity onPress={() => alert('Saved')} style={styles.saveButton}>
+
+      <TouchableOpacity onPress={() => alert('Saved')} style={styles.saveButton}>
         <Text style={styles.saveButtonText}>Save</Text>
       </TouchableOpacity>
     </ScrollView>
@@ -242,7 +257,7 @@ const styles = StyleSheet.create({
   saveButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center', // Center the content horizontally
+    justifyContent: 'center',  
     backgroundColor: 'green',
     padding: screenWidth * 0.02,
     borderRadius: 5,
@@ -254,4 +269,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MeasurementForm;
+export default ShirtMeasurement;

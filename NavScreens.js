@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 const NavScreens = () => {
   return (
     <Stack.Navigator
-      initialRouteName="FemaleMeasurement"
+      initialRouteName="Dresses"
       screenOptions={{
         headerShown: false,
       }}

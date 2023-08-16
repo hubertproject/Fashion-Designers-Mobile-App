@@ -2,7 +2,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyCyhmjcRKokXVT3sSp32N2_Bm3gNndUi1A",
     authDomain: "fashionms-dea49.firebaseapp.com",
     projectId: "fashionms-dea49",
@@ -15,4 +15,4 @@ const firebaseConfig = {
     firebase.initializeApp(firebaseConfig);
   }
   
-  export default firebase;
+   

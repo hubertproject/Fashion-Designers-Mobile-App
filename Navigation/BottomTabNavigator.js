@@ -3,17 +3,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '../Screens/Home';
-import Calendar from '../Screens/Calendar';
+import Notification from '../Screens/Notification';
 import Customer from '../Screens/Customer';
-import Measurement from '../Screens/Dresses';
+import Dresses from '../Screens/Dresses';
 import Settings from '../Screens/Settings';
 
 const Tab = createBottomTabNavigator();
 
 const home = "Home";
-const calendar = "Calendar";
+const notification = "Notification";
 const customer = "Customer";
-const measurement = "Measurement";
+const dresses = "Dresses";
 const settings = "Settings";
 
 const BottomTabNavigator = () => {
@@ -34,10 +34,10 @@ const BottomTabNavigator = () => {
           let rn = route.name;
           if (rn === home) {
             IconName = focused ? "home" : "home-outline";
-          } else if (rn === news) {
+          } else if (rn === customer) {
             IconName = focused ? "customer" : "customer-outline";
           } else if (rn === notification) {
-            IconName = focused ? "calendar" : "calendar-outline";
+            IconName = focused ? "notification" : "notification-outline";
             return (
               <View>
                 <Ionicons name={IconName} size={size} color={color} />
@@ -46,8 +46,8 @@ const BottomTabNavigator = () => {
                 </View>
               </View>
             );
-          } else if (rn === attendance) {
-            IconName = focused ? "measurement" : "measurement-outline";
+          } else if (rn === dresses) {
+            IconName = focused ? "dresses" : "dresses-outline";
           } else if (rn === settings) {
             IconName = focused ? "settings" : "settings-outline";
           }
@@ -57,8 +57,8 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen name={home} component={Home} />
       <Tab.Screen name={customer} component={customer} />
-      <Tab.Screen name={measurement} component={measurement} />
-      <Tab.Screen name={calendar} component={calendar} />
+      <Tab.Screen name={dresses} component={dresses} />
+      <Tab.Screen name={notification} component={notification} />
       <Tab.Screen name={settings} component={Settings} />
     </Tab.Navigator>
   );

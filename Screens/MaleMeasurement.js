@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const screenWidth = Dimensions.get('window').width;
 
-const ShirtMeasurement = () => {
+const MaleMeasurement = () => {
   const [fabricImage, setFabricImage] = useState(null);
   const [designImage, setDesignImage] = useState(null);
   const [dressType, setDressType] = useState('');
@@ -269,4 +269,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShirtMeasurement;
+export default MaleMeasurement;

@@ -10,8 +10,8 @@ const Dresses = ({ navigation }) => {
   };
 
   const dressData = [
-    { name: 'FemaleMeasurement', image: require('../assets/longs.png') },
-    { name: 'MaleMeasurement', image: require('../assets/shirt.png') },
+    { name: 'Female Measurement', image: require('../assets/longs.png') },
+    { name: 'Male Measurement', image: require('../assets/shirt.png') },
   ];
 
   return (

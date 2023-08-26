@@ -7,6 +7,8 @@ import BottomTabNavigator from "./Navigation/BottomTabNavigator";
 // import Profile from "./screens/Profile";
 import FemaleMeasurement from "./Screens/FemaleMeasurement";
 import Dresses from "./Screens/Dresses";
+import Customer from "./Screens/Customer";
+import Contact from "./Screens/Contact";
 import MaleMeasurement from "./Screens/MaleMeasurement";
 
 
@@ -15,7 +17,7 @@ const Stack = createStackNavigator();
 const NavScreens = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Dresses"
+      initialRouteName="Customer"
       screenOptions={{
         headerShown: false,
       }}
@@ -25,7 +27,9 @@ const NavScreens = () => {
       {/* <Stack.Screen name="Signin" component={Signin} /> */}
       <Stack.Screen name="MaleMeasurement" component={MaleMeasurement} /> 
       <Stack.Screen name="Dresses" component={Dresses} /> 
+      <Stack.Screen name="Customer" component={Customer} /> 
       <Stack.Screen name="FemaleMeasurement" component={FemaleMeasurement} /> 
+      <Stack.Screen name="Contact" component={Contact} /> 
 
       <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
       {/* <Stack.Screen name="Home" component={Home} /> */}

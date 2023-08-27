@@ -7,7 +7,9 @@ import {
   ScrollView,
   TextInput,
   Dimensions,
+  Modal,
 } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -18,6 +20,8 @@ const Customer = ({ navigation }) => {
   const [charge, setCharge] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [customers, setCustomers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [hasTriedSubmitting, setHasTriedSubmitting] = useState(false);
 
   const handlePhoneNumberChange = (text) => {
     if (/^\d*$/.test(text)) {
@@ -32,21 +36,30 @@ const Customer = ({ navigation }) => {
   };
 
   const handleAddCustomer = () => {
-    const newCustomer = {
-      id: Date.now(),
-      name,
-      address,
-      phoneNumber,
-      charge,
-      dueDate,
-    };
+    if (name && address && phoneNumber && charge && dueDate) {
+      const newCustomer = {
+        id: Date.now(),
+        name,
+        address,
+        phoneNumber,
+        charge,
+        dueDate,
+      };
 
-    setCustomers([...customers, newCustomer]);
-    setName('');
-    setAddress('');
-    setPhoneNumber('');
-    setCharge('');
-    setDueDate('');
+      setCustomers([...customers, newCustomer]);
+      setName('');
+      setAddress('');
+      setPhoneNumber('');
+      setCharge('');
+      setDueDate('');
+    } else {
+      setShowModal(true);
+      setHasTriedSubmitting(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -85,10 +98,7 @@ const Customer = ({ navigation }) => {
         style={styles.input}
         placeholderTextColor="#999"
       />
-      <TouchableOpacity
-        onPress={handleAddCustomer}
-        style={styles.addButton}
-      >
+      <TouchableOpacity onPress={handleAddCustomer} style={styles.addButton}>
         <Text style={styles.buttonText}>Add Customer</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -97,6 +107,22 @@ const Customer = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>View Contact</Text>
       </TouchableOpacity>
+
+      <Modal visible={showModal} animationType="slide" transparent>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalText}>
+              Please fill in all the required fields.
+            </Text>
+            <TouchableOpacity
+              onPress={handleCloseModal}
+              style={styles.modalButton}
+            >
+              <Text style={styles.buttonText}>OK</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 };
@@ -139,6 +165,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 18,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  modalButton: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
   },
 });
 

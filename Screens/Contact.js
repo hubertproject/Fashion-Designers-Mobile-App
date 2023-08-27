@@ -27,9 +27,9 @@ const Contact = ({ route }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Customer Details</Text>
+      <Text style={styles.title}>Customer Contact</Text>
       <View style={styles.searchContainer}>
-        <AntDesign name="search1" size={20} color="#999" />
+        <AntDesign name="search1" size={40} color="#999" />
         <TextInput
           style={styles.searchInput}
           placeholder="Search by name..."
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
     fontSize: 18,
+    height: 40,
   },
   customerContainer: {
     marginBottom: 10,

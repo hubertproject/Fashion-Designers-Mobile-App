@@ -9,6 +9,8 @@ import FemaleMeasurement from "./Screens/FemaleMeasurement";
 import Dresses from "./Screens/Dresses";
 import Customer from "./Screens/Customer";
 import Contact from "./Screens/Contact";
+import Home from "./Screens/Home";
+import Notification from "./Screens/Notification";
 import MaleMeasurement from "./Screens/MaleMeasurement";
 
 
@@ -30,6 +32,9 @@ const NavScreens = () => {
       <Stack.Screen name="Customer" component={Customer} /> 
       <Stack.Screen name="FemaleMeasurement" component={FemaleMeasurement} /> 
       <Stack.Screen name="Contact" component={Contact} /> 
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Notification" component={Notification} />
+      
 
       <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
       {/* <Stack.Screen name="Home" component={Home} /> */}

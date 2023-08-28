@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, View, Text } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import Home from '../Screens/Home';
 import Notification from '../Screens/Notification';
 import Customer from '../Screens/Customer';
-import Dresses from '../Screens/Dresses';
+import Contact from '../Screens/Contact';
 import Settings from '../Screens/Settings';
 
 const Tab = createBottomTabNavigator();
@@ -13,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const home = "Home";
 const notification = "Notification";
 const customer = "Customer";
-const dresses = "Dresses";
+const contact = "Contact";
 const settings = "Settings";
 
 const BottomTabNavigator = () => {
@@ -21,48 +20,34 @@ const BottomTabNavigator = () => {
     <Tab.Navigator
       initialRouteName={home}
       screenOptions={({ route }) => ({
-        headerShown: false,
-        tabBarStyle: {
-          display: "flex",
-        },
-        tabBarActiveTintColor: "#191970",
-        tabBarInactiveTintColor: "gray",
-        tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
-        tabBarStyle: { padding: 10, height: 70 },
+        // ... (other options)
         tabBarIcon: ({ focused, color, size }) => {
-          let IconName;
+          let IconSource;
           let rn = route.name;
           if (rn === home) {
-            IconName = focused ? "home" : "home-outline";
+            IconSource = focused ? require('../assets/home-focused.png') : require('../assets/home-outline.png');
           } else if (rn === customer) {
-            IconName = focused ? "customer" : "customer-outline";
+            IconSource = focused ? require('../assets/customer-focused.png') : require('../assets/customer-outline.png');
           } else if (rn === notification) {
-            IconName = focused ? "notification" : "notification-outline";
-            return (
-              <View>
-                <Ionicons name={IconName} size={size} color={color} />
-                <View style={styles.notificationBadge}>
-                  <Text style={styles.notificationBadgeText}>1</Text>
-                </View>
-              </View>
-            );
-          } else if (rn === dresses) {
-            IconName = focused ? "dresses" : "dresses-outline";
+            IconSource = focused ? require('../assets/notification-focused.png') : require('../assets/notification-outline.png');
+          } else if (rn === contact) {
+            IconSource = focused ? require('../assets/contact-focused.png') : require('../assets/contact-outline.png');
           } else if (rn === settings) {
-            IconName = focused ? "settings" : "settings-outline";
+            IconSource = focused ? require('../assets/settings-focused.png') : require('../assets/settings-outline.png');
           }
-          return <Ionicons name={IconName} size={size} color={color} />;
+          return <Image source={IconSource} style={{ width: size, height: size, tintColor: color }} />;
         },
       })}
     >
       <Tab.Screen name={home} component={Home} />
-      <Tab.Screen name={customer} component={customer} />
-      <Tab.Screen name={dresses} component={dresses} />
-      <Tab.Screen name={notification} component={notification} />
+      <Tab.Screen name={customer} component={Customer} />
+      <Tab.Screen name={contact} component={Contact} />
+      <Tab.Screen name={notification} component={Notification} />
       <Tab.Screen name={settings} component={Settings} />
     </Tab.Navigator>
   );
 };
+
 
 const styles = StyleSheet.create({
   notificationBadge: {

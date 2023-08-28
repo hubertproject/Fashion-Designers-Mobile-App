@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
-import { AntDesign } from '@expo/vector-icons'; // Import the search icon from vector icons library
+import { AntDesign } from '@expo/vector-icons';
 
 const Contact = ({ route }) => {
   const [customers, setCustomers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    const customersData = route.params.customers;
+    const customersData = route.params?.customers || [];
     setCustomers(customersData);
-  }, [route.params.customers]);
+  }, [route.params]);
 
   const toggleCustomerDetails = (customerId) => {
     const updatedCustomers = customers.map(customer => {

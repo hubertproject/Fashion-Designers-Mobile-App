@@ -169,20 +169,19 @@ const MaleMeasurement = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: screenWidth * 0.05, // Adjust padding based on screen width
   },
   dressTypeContainer: {
-    marginBottom: 10,
+    marginBottom: screenWidth * 0.03, // Adjust margins based on screen width
   },
   dressTypeInput: {
-    fontSize: screenWidth * 0.06,
-    paddingVertical: screenWidth * 0.03,
+    fontSize: screenWidth * 0.04, // Adjust font size based on screen width
+    paddingVertical: screenWidth * 0.025, // Adjust padding based on screen width
     paddingHorizontal: screenWidth * 0.02,
-    height: screenWidth * 0.12,
+    height: screenWidth * 0.1, // Adjust height based on screen width
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-    
   },
   imagesContainer: {
     flexDirection: 'row',
@@ -232,10 +231,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: screenWidth * 0.02,
     marginBottom: 10,
     marginRight: 10,
+    flex: 1, // Ensure input fields expand to fill available space
   },
   input: {
     flex: 1,
-    height: screenWidth * 0.10,
+    height: screenWidth * 0.1, // Adjust input field height based on screen width
     paddingHorizontal: screenWidth * 0.01,
     fontSize: screenWidth * 0.03,
   },
@@ -251,13 +251,12 @@ const styles = StyleSheet.create({
   addMoreButtonText: {
     fontSize: screenWidth * 0.04,
     fontWeight: 'bold',
-     
     marginRight: screenWidth * 0.02,
   },
   saveButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',  
+    justifyContent: 'center',
     backgroundColor: 'green',
     padding: screenWidth * 0.02,
     borderRadius: 5,

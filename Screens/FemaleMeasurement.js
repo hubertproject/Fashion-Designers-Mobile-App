@@ -19,15 +19,26 @@ const FemaleMeasurement = () => {
   const [designImage, setDesignImage] = useState(null);
   const [dressType, setDressType] = useState('');
   const [measurements, setMeasurements] = useState([
-    { measurement: 'Chest', size: '' },
+    { measurement: 'Bust', size: '' },
     { measurement: 'Waist', size: '' },
-    { measurement: 'Seat', size: '' },
-    { measurement: 'Bicep', size: '' },
-    { measurement: 'Shirt Length', size: '' },
-    { measurement: 'Shoulder Width', size: '' },
+    { measurement: 'Hip', size: '' },
+    { measurement: 'Shoulder', size: '' },
+    { measurement: 'Shoulder to Shoulder', size: '' },
+    { measurement: 'Shoulder to Underbust', size: '' },
+    { measurement: 'Shoulder to Nipple', size: '' },
+    { measurement: 'Nipple to Nipple', size: '' },
+    { measurement: 'Tip to Tip', size: '' },
+    { measurement: 'Across Chest', size: '' },
+    { measurement: 'Across Back', size: '' },
+    { measurement: 'Shoulder to Waist', size: '' },
+    { measurement: 'Shoulder to Hip', size: '' },
+    { measurement: 'Kaba Length', size: '' },
     { measurement: 'Sleeve Length', size: '' },
-    { measurement: 'Cuff Circumference', size: '' },
-    { measurement: 'Collar Size', size: '' },
+    { measurement: 'Around Arm', size: '' },
+    { measurement: 'Slit Length', size: '' },
+    { measurement: 'Blouse Length', size: '' },
+    { measurement: 'Skit Length', size: '' },
+    { measurement: 'Dress Length', size: '' },
   ]);
 
   const handleSelectImage = async (imageType) => {
@@ -82,7 +93,7 @@ const FemaleMeasurement = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} scrollEnabled={true}>
       <View style={styles.dressTypeContainer}>
         <TextInput
           placeholder="Enter Dress Type"
@@ -182,7 +193,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-    
   },
   imagesContainer: {
     flexDirection: 'row',
@@ -222,6 +232,7 @@ const styles = StyleSheet.create({
   inputsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: screenWidth * 0.03, // Adjust spacing between input fields
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -229,9 +240,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
+    width: screenWidth * 0.35, // Adjust width to fit the screen
+    marginRight: screenWidth * 0.02, // Adjust spacing between input fields
     paddingHorizontal: screenWidth * 0.02,
-    marginBottom: 10,
-    marginRight: 10,
   },
   input: {
     flex: 1,
@@ -251,13 +262,12 @@ const styles = StyleSheet.create({
   addMoreButtonText: {
     fontSize: screenWidth * 0.04,
     fontWeight: 'bold',
-     
     marginRight: screenWidth * 0.02,
   },
   saveButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',  
+    justifyContent: 'center',
     backgroundColor: 'green',
     padding: screenWidth * 0.02,
     borderRadius: 5,

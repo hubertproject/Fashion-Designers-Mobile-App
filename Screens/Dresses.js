@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -10,15 +18,18 @@ const Dresses = ({ navigation }) => {
   };
 
   const dressData = [
-    { name: 'Female Measurement', image: require('../assets/longs.png') },
-    { name: 'Male Measurement', image: require('../assets/shirt.png') },
+    { name: 'FemaleMeasurement', image: require('../assets/longs.png') },
+    { name: 'MaleMeasurement', image: require('../assets/shirt.png') },
   ];
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imagesContainer}>
         {dressData.map((dress, index) => (
-          <TouchableOpacity key={index} onPress={() => handleImagePress(dress.name)} style={styles.imageWrapper}>
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleImagePress(dress.name)}
+            style={styles.imageWrapper}>
             <View style={styles.imageContainer}>
               <Image source={dress.image} style={styles.image} />
             </View>

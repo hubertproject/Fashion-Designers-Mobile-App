@@ -1,35 +1,132 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-// import BottomTabNavigator from "./Navigation/BottomTabNavigator";
-import FemaleMeasurement from "./Screens/FemaleMeasurement";
-import Dresses from "./Screens/Dresses";
-import Customer from "./Screens/Customer";
-import Contact from "./Screens/Contact";
-import Home from "./Screens/Home";
- 
- 
-import MaleMeasurement from "./Screens/MaleMeasurement";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const Stack = createStackNavigator();
+import { View, Text } from "react-native";
+import { Home, Contact, Customer, Dresses, Settings } from "./Screens/BottomScreens";
+import { Entypo } from "@expo/vector-icons";
 
-const NavScreens = () => {
+const Tab = createBottomTabNavigator();
+
+export default function NavScreens() {
+  const screenOptions = {
+    tabBarShowLabel: false,
+    headerShown: false,
+    tabBarStyle: {
+      position: "absolute",
+      bottom: 0,
+      right: 0,
+      left: 0,
+      elevation: 0,
+      height: 0, // Set the height to zero
+      backgroundColor: "#fff", // Fix the typo here
+    },
+  };
+
   return (
-    <Stack.Navigator
-      initialRouteName="Dresses"
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="MaleMeasurement" component={MaleMeasurement} />
-      <Stack.Screen name="Dresses" component={Dresses} />
-      <Stack.Screen name="Customer" component={Customer} />
-      <Stack.Screen name="FemaleMeasurement" component={FemaleMeasurement} />
-      <Stack.Screen name="Contact" component={Contact} />
-      <Stack.Screen name="Home" component={Home} />
-       
-      {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} /> */}
-    </Stack.Navigator>
-  );
-};
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen
+          name="home"
+          component={Home}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{ alignItems: "center", justifyContent: "center" }}
+              >
+                <Entypo
+                  name="home"
+                  size={24}
+                  color={focused ? "blue" : "red"}
+                />
+                <Text style={{ fontSize: 12, color: focused ? "blue" : "red" }}>
+                  HOME
+                </Text>
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Contact"
+          component={Contact}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{ alignItems: "center", justifyContent: "center" }}
+              >
+                <Entypo
+                  name="user"
+                  size={24}
+                  color={focused ? "blue" : "red"}
+                />
+                <Text style={{ fontSize: 12, color: focused ? "blue" : "red" }}>
+                  CONTACT
+                </Text>
+              </View>
+            ),
+          }}
+        />
 
-export default NavScreens;
+        <Tab.Screen
+          name="Dresses"
+          component={Dresses}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{ alignItems: "center", justifyContent: "center" }}
+              >
+                <Entypo
+                  name="dress"
+                  size={24}
+                  color={focused ? "blue" : "red"}
+                />
+                <Text style={{ fontSize: 12, color: focused ? "blue" : "red" }}>
+                  DRESSES
+                </Text>
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Customer"
+          component={Customer}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{ alignItems: "center", justifyContent: "center" }}
+              >
+                <Entypo
+                  name="customer"
+                  size={24}
+                  color={focused ? "blue" : "red"}
+                />
+                <Text style={{ fontSize: 12, color: focused ? "blue" : "red" }}>
+                  CUSTOMER
+                </Text>
+              </View>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings} 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{ alignItems: "center", justifyContent: "center" }}
+              >
+                <Entypo
+                  name="settings"
+                  size={24}
+                  color={focused ? "blue" : "red"}
+                />
+                <Text style={{ fontSize: 12, color: focused ? "blue" : "red" }}>
+                  SETTINGS
+                </Text>
+              </View>
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
